@@ -15,7 +15,8 @@ Linux and macOS:
 sudo git clone https://github.com/karenyesayan/tratvel-landing-page.git
 cd tratvel-landing-page
 npm install
-npm run dev
+npm run build
+npm run watch
 ```
 
 Windows:
@@ -23,8 +24,8 @@ Windows:
 ```bash
 git clone https://github.com/karenyesayan/tratvel-landing-page.git
 cd tratvel-landing-page
-npm install
-npm run dev
+npm run build
+npm run watch
 ```
 
 ## Credits  
