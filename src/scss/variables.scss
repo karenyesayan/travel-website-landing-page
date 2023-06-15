@@ -1,0 +1,20 @@
+@import "./functions.scss";
+
+$headText: #212832;
+$headingPrime : #14183E;
+$primaryText : #5E6282;
+$primaryBtn : #F1A501;
+$headerBg: #FFF1DA;
+$salmonOrange: #DF6951;
+
+$minWidth: 320;
+$maxWidth: 1440;
+$maxWidthContainer: 1167;
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$mobileEX: em(479.98);
+$mobileSM: em(575.98);
+$mobile: em(767.98);
+$tablet: em(991.98);
+$desktop: em($containerWidth);

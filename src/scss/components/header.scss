@@ -1,0 +1,310 @@
+@use "sass:math";
+
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.header {
+    font: 400 normal rem(17)/math.div(22, 17) "OpenSans-SemiBold";
+    padding: 10px 0;
+
+    &__container {
+        display: flex;
+        @include adaptiveValue("min-height", 85, 0, 1);
+        align-items: center;
+        gap: 20px;
+
+        &::before {
+            content:'';
+            position:absolute;
+            top:0;
+            right: 0;
+            left: 0;
+            background: url('../../img/Decore.svg') right top/prc(704, $maxWidth) prc(724, 869) no-repeat;
+            height: 100%;
+            z-index: -1;
+
+            @media (max-width: $desktop) {
+                @include adaptiveValue("height", 850, 715, 0);
+                background: #FFF1DA;
+                min-width: 100%;
+            }
+        }
+    }
+
+    &__logo {
+        flex: 1 1 auto;
+
+        img {
+            @include adaptiveValue("width", 116, 88, 1);
+        }
+    }
+
+    &__menu {
+        flex: 1 1 rem(550);
+
+        @media (max-width: $desktop) {
+            display: none;
+            opacity: 0;
+            transition: opacity 500ms, display 500ms;
+        }
+    }
+
+    &__user-menu {
+        flex: 1 1 auto;
+        display: inline-flex;
+        justify-content: flex-end;
+        font-weight: 500;
+    }
+
+    &__burger {
+        display: none;
+        flex: 0 1 rem(40);
+
+        @media (max-width: $desktop) {
+            display: flex;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+
+    &__list {
+        display: flex;
+        gap: rem(60);
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        background: 0% 100% / 0% 2px no-repeat linear-gradient($primaryBtn, $primaryBtn);
+        transition: background-size .3s;
+        color: $headText;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-size: 100% 2px;
+                color: $primaryBtn;
+            }
+        }
+    }
+}
+
+.user-menu {
+    line-height: 2.2;
+    gap: clamp(rem(5), 4vw, rem(47));
+
+    @media (max-width: $desktop) {
+        &__login, 
+        &__sign-up {
+            display: none;
+        }
+
+        &__mobile {
+            display: flex;
+        }
+    }
+
+    &__login, 
+    &__sign-up, 
+    &__mobile {
+        color: $headText;
+    }
+
+    &__sign-up {
+        display: inline-block;
+        width: 102px;
+        height: 40px;
+        border: 1px solid $headText;
+        border-radius: 5px;
+        transition: all .5s ease;
+        box-shadow: inset 0 0 0 0 $primaryBtn;
+        text-align: center;
+
+        @media (any-hover: hover) {
+            &:hover {
+                box-shadow: inset 0 -100px 0 0 $primaryBtn;
+                border: none;
+                color: #fff;
+            }
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+
+    &__mobile {
+        display: none;
+        font-size: rem(26);
+        position: relative;
+        align-self: center;
+        padding: 8px;
+    }
+}
+
+.drop-down {
+    display: flex;
+    justify-content: flex-end;
+    color: $headText;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+
+    &__title {
+        display: flex;
+        flex-direction: row-reverse;
+
+        &::before {
+            padding: 12.3px 6.15px;
+            font-size: 12px;
+            transition: all 0.1s ease-out;
+        }
+    }
+
+    &__list {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #fff;
+        transition: all 0.2s ease-out;
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0 9px;
+        width: 84px;
+    }
+
+    &__link {
+        display: block;
+        color: inherit;
+        padding: 6.5px 0px;
+        transition: all 0.3s ease-out;
+        border-top: 1px solid #e6e8ea;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $salmonOrange;
+            }
+        }
+    }
+
+
+    &--active {
+        .drop-down__title {
+            &:before {
+                transform: rotate(180deg);
+            }
+        }
+
+        .drop-down__list {
+            box-shadow: 0px 30px 80px -20px rgba(0, 0, 0, 0.25);
+            max-height: 400px;
+        }
+    }
+
+}
+
+.burger {
+    position: relative;
+
+    &__menu, 
+    &__content {
+        position: relative;
+        transition: .5s ease-in-out;
+    }
+
+    &__menu {
+        display: flex;
+        flex: 1 1 rem(50);
+        height: em(50);
+        border-radius: 0% 0% 0% 100%;
+        box-shadow: 0 0 0 0 #FFFAF0, 0 0 0 0 #FFFAF0;
+        cursor: pointer;
+    }
+
+    &__content {
+        margin: auto;
+        width: 30px;
+        height: 2px;
+        display: block;
+        background: $headText;
+        transform-origin: center;
+        z-index: 1; 
+
+        &:after,
+        &:before {
+            transition: .5s ease-in-out;
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+        }
+
+        &:before {
+            top: -10px;
+        }
+
+        &:after {
+            bottom: -10px;
+        }
+    }
+}
+
+#toggle {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { display: none; opacity: 0;}
+    to { display: block; opacity: 1;}
+  }
+
+#toggle:checked {
+
+    &~.menu {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        background-color: #fff;
+        z-index: 1;
+        display: block;
+        opacity: 1;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    &~.menu .menu__list {
+        flex-direction: column;
+        line-height: math.div(25, 17);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 40%);
+    }
+
+    &~.burger .burger__menu {
+        box-shadow: 0 0 0 100vw #fff, 0 0 0 100vh #fff;
+        border-radius: 0;
+        background: #fff;
+    }
+
+    &~.burger .burger__menu .burger__content {
+        transform: rotate(45deg);
+
+        &:after {
+            transform: rotate(90deg);
+            bottom: 0;
+        }
+
+        &:before {
+            transform: rotate(90deg);
+            top: 0;
+        }
+    }
+}
