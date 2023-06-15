@@ -15,7 +15,8 @@ Linux and macOS:
 sudo git clone https://github.com/karenyesayan/travel-website-landing-page.git
 cd travel-website-landing-page
 npm install
-npm run dev
+npm run build
+npm run watch
 ```
 
 Windows:
@@ -24,7 +25,8 @@ Windows:
 git clone https://github.com/karenyesayan/travel-website-landing-page.git
 cd travel-website-landing-page
 npm install
-npm run dev
+npm run build
+npm run watch
 ```
 
 ## Credits  
